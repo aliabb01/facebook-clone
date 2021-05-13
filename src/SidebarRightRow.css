@@ -1,0 +1,30 @@
+.sidebarRightRow {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.sidebarRightRow:hover {
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.sidebarRightRow > h4 {
+    margin-right: 20px;
+    font-weight: 600;
+}
+
+.sidebarRightRow > .MuiSvgIcon-root {
+    font-size: xx-large;
+    color: #2e81f4;
+}
+
+.sidebarRightRow__friendName {
+    margin-left: 15px;
+}
+
+.sidebarRightRow__friendName > h3 {
+    margin-right: 20px;
+    font-weight: 600;
+}
