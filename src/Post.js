@@ -1,5 +1,5 @@
 import { Avatar } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import "./Post.css";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
@@ -8,6 +8,21 @@ import NearMeIcon from "@material-ui/icons/NearMe";
 import { ExpandMoreOutlined } from "@material-ui/icons";
 
 function Post({ profilePic, image, username, timestamp, message }) {
+
+    const [liked, setLiked] = useState(false);
+    const [likeStyle, setLikeStyle] = useState({})
+
+    const toggleLike = () => {
+        if(liked) {
+            setLiked(false)
+            setLikeStyle({})
+        }
+        else {
+            setLiked(true)
+            setLikeStyle({ color: '#2E81F4' })
+        }
+    }
+
     return (
         <div className="post">
             <div className="post__top">
@@ -23,12 +38,17 @@ function Post({ profilePic, image, username, timestamp, message }) {
                 <p>{message}</p>
             </div>
 
-            <div className="post__image">
-                <img src={image} alt="" />
-            </div>
+            { image && (
+                <div className="post__image">
+                    <img src={image} alt="" />
+                </div>
+            )}
 
             <div className="post__options">
-                <div className="post__option">
+                <div className="post__option"
+                    onClick={() => toggleLike()}
+                    style={likeStyle}
+                >
                     <ThumbUpIcon />
                     <p>Like</p>
                 </div>
