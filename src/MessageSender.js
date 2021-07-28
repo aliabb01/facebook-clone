@@ -16,21 +16,29 @@ function MessageSender() {
 
     const [imageUrl, setImageUrl] = useState("");
 
+    const [showSubmitAlert, setShowSubmitAlert] = useState(false);
+
     const handleSubmit = e => {
         e.preventDefault();
 
-        // db pushing posts stuff
-        db.collection('posts').add({
-            message: input,
-            timestamp: firebase.firestore.FieldValue.
-            serverTimestamp(),
-            profilePic: user.photoURL,
-            username: user.displayName,
-            image: imageUrl
-        })
+        if(input) {
+            setShowSubmitAlert(false)
+            // db pushing posts stuff
+            db.collection('posts').add({
+                message: input,
+                timestamp: firebase.firestore.FieldValue.
+                serverTimestamp(),
+                profilePic: user.photoURL,
+                username: user.displayName,
+                image: imageUrl
+            })
 
-        setInput("");
-        setImageUrl("");
+            setInput("");
+            setImageUrl("");
+        }
+        else {
+            setShowSubmitAlert(true)
+        }
     };
 
     return (
@@ -55,6 +63,12 @@ function MessageSender() {
                     </button>
                 </form>
             </div>
+
+            {showSubmitAlert && (
+                <div style={{ display: "flex", marginLeft: "2rem" }}>
+                    Please fill in the field above
+                </div>
+            )}
             
             <div className="messageSender__bottom">
                 <div className="messageSender__option">
