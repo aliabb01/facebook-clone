@@ -8,10 +8,10 @@ function SidebarRight() {
             <div className="sidebarRight__friends">
                 <h3>Contacts :</h3>
             </div>
-            <SidebarRightRow title='Name Surname' />
-            <SidebarRightRow title='Contact 1' />
-            <SidebarRightRow title='Contact 2' />
-            <SidebarRightRow title='Contact 3' />
+            <SidebarRightRow title='John Doe' />
+            <SidebarRightRow title='Max Wagner' />
+            <SidebarRightRow title='Kaitlyn Mcgee' />
+            <SidebarRightRow title='Jack Parker' />
         </div>
     )
 }
